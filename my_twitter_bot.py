@@ -160,6 +160,6 @@ while True:
     nba_stats()
     counter+= 1
     print(counter)
-    time.sleep(900)
+    time.sleep(300)
 
 
