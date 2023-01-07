@@ -1,13 +1,8 @@
 import tweepy
 import time
 import requests
-import pandas as pd 
-import numpy as np
 from datetime import datetime, timezone
-import string
-#import emoji
 
-#pd.set_option('display.max_columns', None)
 team_tag = {}
 team_tag["Hawks"] = "#TrueToAtlanta"
 team_tag["Celtics"] = "#BleedGreen"
