@@ -54,6 +54,7 @@ game_date = ''
 
 finals = []
 schedule = []
+half = []
 
 def remove(string):
     return "".join(string.split())
@@ -131,7 +132,7 @@ def nba_stats():
             #print(start_tweet)
             continue
         elif game["gameStatus"] == 2:
-            if game_time == "Half":
+            if (game_time == "Half") and (game_code in half):
                 continue
             api.update_status(update_tweet)
             #print(update_tweet)
