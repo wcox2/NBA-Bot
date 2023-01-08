@@ -86,7 +86,7 @@ def nba_stats():
         away_score = str(game["awayTeam"]["score"])
         home_score = str(game["homeTeam"]["score"])
         clock = str(game["gameClock"])[2:4] + ':' + str(game["gameClock"])[5:7]
-        matchup = home + ' ' + '(' + str(home_wins) + '-' + str(home_losses) + ')' + ' ' + "vs" + ' ' + away + ' ' + '(' + str(away_wins) + '-' + str(away_losses) + ')'
+        matchup = '#' +  home + ' ' + '(' + str(home_wins) + '-' + str(home_losses) + ')' + ' ' + "vs" + ' ' + '#' +  away + ' ' + '(' + str(away_wins) + '-' + str(away_losses) + ')'
         mactup_no_record = home + ' ' + "vs" + ' ' + away 
         todays_games.append(matchup)
         game_time = str(game["gameStatusText"])
@@ -102,7 +102,7 @@ def nba_stats():
             most_points = game["gameLeaders"]["awayLeaders"]["points"]
             most_points_name = game["gameLeaders"]["awayLeaders"]["name"]
 
-        schedule_tweet = matchup + '\n' + '\n' + '@ '+game["homeTeam"]["teamCity"] + '\n' + '\n' + game_time
+        schedule_tweet = matchup + '\n' + '\n' + '@ '+game["homeTeam"]["teamCity"] + '\n' + '\n' + game_time +  '\n' + '\n' + home_tag + ' ' + away_tag
 
 
 
@@ -115,11 +115,11 @@ def nba_stats():
             potg = away_leader_name + '\n' +  away_leader_stat + ' | ' + str(game["gameLeaders"]["awayLeaders"]["rebounds"]) + ' REB' +' | ' + str(game["gameLeaders"]["awayLeaders"]["assists"]) + ' AST'
 
         if home_score > away_score:
-            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score +  '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
-            update_tweet = '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
+            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + '#' +  home + ': ' + home_score + '\n'+ '#' +  away + ': ' + away_score +  '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
+            update_tweet = '#' +  home + ': ' + home_score + '\n'+ '#' + away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
         else:
             end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '.' + '\n' + '\n' + away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
-            update_tweet = away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
+            update_tweet = '#' + away + ': ' + away_score + '\n' + '#' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
 
         start_tweet = matchup  + '\n' + '\n' + "We are underway in " + game["homeTeam"]["teamCity"] + '!' +  '\n' + '\n' + home_tag + ' ' + away_tag
 
