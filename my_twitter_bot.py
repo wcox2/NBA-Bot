@@ -116,10 +116,10 @@ def nba_stats():
 
         if home_score > away_score:
             end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score +  '\n' + '\n' + potg
-            update_tweet = '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name + '| '+  home_leader_stat + '\n' + away_leader_name + '| '+ away_leader_stat
+            update_tweet = '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat
         else:
             end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '.' + '\n' + '\n' + away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n' + '\n' + potg
-            update_tweet = away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name + '| '+  home_leader_stat + '\n' + away_leader_name + '| '+ away_leader_stat
+            update_tweet = away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat
 
         start_tweet = matchup  + '\n' + '\n' + "We are underway in " + game["homeTeam"]["teamCity"] + '!'
 
