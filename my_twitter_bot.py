@@ -2,6 +2,7 @@ import tweepy
 import time
 import requests
 from datetime import datetime, timezone
+import config
 
 team_tag = {}
 team_tag["Hawks"] = "#TrueToAtlanta"
@@ -37,11 +38,11 @@ team_tag["Wizards"] = "DCAboveAll"
 
 url = 'https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json'
 
-CONSUMER_KEY = 'I9PELf13z6AWfthSz8PvkpLZ5'
-CONSUMER_SECRET = 'JslQWV6C4CdLtMJtBX06EprNUMefxHQS51rZbmhhUx33sTMpTh'
-BEARER_KEY = 'AAAAAAAAAAAAAAAAAAAAAIUYlAEAAAAAE4hXxpFE5v9LUqetoY1e%2BWytn%2Fw%3Df1x76bMUxKdVQZrGlfKUmDSx7ziwqAWU99165hQIU5KLrO3ju3'
-ACCESS_KEY = '3310071740-PhJaLKRnMOYziqG9mqmOw7mITap6GDiYYnszqSA'
-ACCESS_SECRET = 'x1WzFtKL2OMv5Pj2nx78B4BApEFMtGk9MtEZLHyRewpm7'
+CONSUMER_KEY = config.consumer_key
+CONSUMER_SECRET = config.consumer_secret
+BEARER_KEY = config.bearer_key
+ACCESS_KEY = config.access_key
+ACCESS_SECRET = config.access_secret
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -120,7 +121,7 @@ def nba_stats():
             end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + '#' +  home + ': ' + home_score + '\n'+ '#' +  away + ': ' + away_score +  '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
             update_tweet = '#' +  home + ': ' + home_score + '\n'+ '#' + away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
         else:
-            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '.' + '\n' + '\n' + away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
+            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '.' + '\n' + '\n' + '#' + away + ': ' + away_score + '\n' + '#' + home + ': ' + home_score + '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
             update_tweet = '#' + away + ': ' + away_score + '\n' + '#' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
 
         start_tweet = matchup  + '\n' + '\n' + "We are underway in " + game["homeTeam"]["teamCity"] + '!' +  '\n' + '\n' + home_tag + ' ' + away_tag
@@ -158,6 +159,9 @@ def nba_stats():
                 continue
         except:
             continue
+
+    print(home)
+    print(away)
 
     return finals
 
