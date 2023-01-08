@@ -77,13 +77,13 @@ def nba_stats():
         game_code = game["gameCode"]
         
         home = game["homeTeam"]["teamName"]
-        home = home.replace(" ", "")
         home_tag = str(team_tag.get(home))
+        home = home.replace(" ", "")
         home_wins = game["homeTeam"]["wins"]
         home_losses = game["homeTeam"]["losses"]
         away = game["awayTeam"]["teamName"]
-        away = away.replace(" ", "")
         away_tag = str(team_tag.get(away))
+        away = away.replace(" ", "")
         away_wins = game["awayTeam"]["wins"]
         away_losses = game["awayTeam"]["losses"]
         quarter = str(game["period"])
