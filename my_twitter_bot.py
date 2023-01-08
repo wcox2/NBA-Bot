@@ -91,7 +91,7 @@ def nba_stats():
         todays_games.append(matchup)
         game_time = str(game["gameStatusText"])
         home_leader_name = str(game["gameLeaders"]["homeLeaders"]["name"]) + ' '
-        home_leader_stat = str(game["gameLeaders"]["homeLeaders"]["points"]) + ' PTS'
+        home_leader_stat = str(game["gameLeaders"]["homeLeaders"]["points"]) + ' PTS' + '| ' + str(game["gameLeaders"]["homeLeaders"]["rebounds"]) + ' REB' + '| ' + str(game["gameLeaders"]["homeLeaders"]["assists"]) + ' AST'
         away_leader_name = str(game["gameLeaders"]["awayLeaders"]["name"]) +' '
         away_leader_stat = str(game["gameLeaders"]["awayLeaders"]["points"]) + ' PTS'
 
