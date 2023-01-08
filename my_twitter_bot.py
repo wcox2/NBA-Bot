@@ -56,6 +56,8 @@ finals = []
 schedule = []
 half = []
 
+
+
 def remove(string):
     return "".join(string.split())
 
@@ -110,9 +112,9 @@ def nba_stats():
         potg = ''
 
         if(int(game["homeTeam"]["score"])  > int(game["awayTeam"]["score"])):
-            potg = home_leader_name + '\n' +  home_leader_stat +' | ' + str(game["gameLeaders"]["homeLeaders"]["rebounds"]) + ' REB' + ' | ' + str(game["gameLeaders"]["homeLeaders"]["assists"]) + ' AST'
+            potg = home_leader_name + '\n' +  home_leader_stat
         else:
-            potg = away_leader_name + '\n' +  away_leader_stat + ' | ' + str(game["gameLeaders"]["awayLeaders"]["rebounds"]) + ' REB' +' | ' + str(game["gameLeaders"]["awayLeaders"]["assists"]) + ' AST'
+            potg = away_leader_name + '\n' +  away_leader_stat
 
         if home_score > away_score:
             end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + '#' +  home + ': ' + home_score + '\n'+ '#' +  away + ': ' + away_score +  '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
@@ -126,6 +128,7 @@ def nba_stats():
         #:round_pushpin:
         #end of quarter
         #"PT00M00.00S"
+
 
         try:
             if(date == game["gameTimeUTC"]):
