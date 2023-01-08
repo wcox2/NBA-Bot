@@ -131,6 +131,8 @@ def nba_stats():
             #print(start_tweet)
             continue
         elif game["gameStatus"] == 2:
+            if game_time == "Half":
+                continue
             api.update_status(update_tweet)
             #print(update_tweet)
             continue
