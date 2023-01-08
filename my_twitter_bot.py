@@ -73,12 +73,12 @@ def nba_stats():
 
         game_code = game["gameCode"]
         
-        home_1 = game["homeTeam"]["teamName"]
-        home = team_tag.get(home_1)
+        home = game["homeTeam"]["teamName"]
+        home_tag = team_tag.get(home)
         home_wins = game["homeTeam"]["wins"]
         home_losses = game["homeTeam"]["losses"]
-        away_1 = game["awayTeam"]["teamName"]
-        away = team_tag.get(away_1)
+        away = game["awayTeam"]["teamName"]
+        away_tag = team_tag.get(away)
         away_wins = game["awayTeam"]["wins"]
         away_losses = game["awayTeam"]["losses"]
         quarter = str(game["period"])
@@ -115,13 +115,13 @@ def nba_stats():
             potg = away_leader_name + '\n' +  away_leader_stat + ' | ' + str(game["gameLeaders"]["awayLeaders"]["rebounds"]) + ' REB' +' | ' + str(game["gameLeaders"]["awayLeaders"]["assists"]) + ' AST'
 
         if home_score > away_score:
-            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score +  '\n' + '\n' + potg
-            update_tweet = '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat
+            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '\n' + '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score +  '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
+            update_tweet = '\n' + home + ': ' + home_score + '\n'+ away + ': ' + away_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
         else:
-            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '.' + '\n' + '\n' + away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n' + '\n' + potg
-            update_tweet = away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat
+            end_tweet = 'Final from ' + game["homeTeam"]["teamCity"] + '.' + '\n' + '\n' + away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n' + '\n' + potg +  '\n' + '\n' + home_tag + ' ' + away_tag
+            update_tweet = away + ': ' + away_score + '\n' + home + ': ' + home_score + '\n'+ game["gameStatusText"] + '\n' + '\n' + home_leader_name +  home_leader_stat + '\n' + away_leader_name + away_leader_stat +  '\n' + '\n' + home_tag + ' ' + away_tag
 
-        start_tweet = matchup  + '\n' + '\n' + "We are underway in " + game["homeTeam"]["teamCity"] + '!'
+        start_tweet = matchup  + '\n' + '\n' + "We are underway in " + game["homeTeam"]["teamCity"] + '!' +  '\n' + '\n' + home_tag + ' ' + away_tag
 
         #:round_pushpin:
         #end of quarter
