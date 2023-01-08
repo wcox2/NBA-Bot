@@ -127,30 +127,33 @@ def nba_stats():
         #end of quarter
         #"PT00M00.00S"
 
-        if(date == game["gameTimeUTC"]):
-            api.update_status(start_tweet)
-            #print(start_tweet)
-            continue
-        elif game["gameStatus"] == 2:
-            if (game_time == "Half") and (game_code in half):
+        try:
+            if(date == game["gameTimeUTC"]):
+                api.update_status(start_tweet)
+                #print(start_tweet)
                 continue
-            api.update_status(update_tweet)
-            #print(update_tweet)
-            continue
-        elif game["gameStatus"] == 3:
-            if (game_code in finals):
+            elif game["gameStatus"] == 2:
+                if (game_time == "Half") and (game_code in half):
+                    continue
+                api.update_status(update_tweet)
+                #print(update_tweet)
                 continue
-            api.update_status(end_tweet)
-            #print(end_tweet)
-            finals.append(game_code)
-            continue
-        elif (game_code in schedule):
-            continue
-        elif (game_code not in schedule):
-            #print(schedule_tweet)
-            api.update_status(schedule_tweet)
-            schedule.append(game_code)
-        else:
+            elif game["gameStatus"] == 3:
+                if (game_code in finals):
+                    continue
+                api.update_status(end_tweet)
+                #print(end_tweet)
+                finals.append(game_code)
+                continue
+            elif (game_code in schedule):
+                continue
+            elif (game_code not in schedule):
+                #print(schedule_tweet)
+                api.update_status(schedule_tweet)
+                schedule.append(game_code)
+            else:
+                continue
+        except:
             continue
 
     return finals
