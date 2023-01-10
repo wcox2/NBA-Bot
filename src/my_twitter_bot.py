@@ -25,7 +25,7 @@ team_tag["Heat"] = "#HeatCulture"
 team_tag["Bucks"] = "#FeerTheDear"
 team_tag["Timberwolves"] = "#RaisedByWolves"
 team_tag["Pelicans"] = "#Pelicans"
-team_tag["Knicks"] = "#NewYorkForecer"
+team_tag["Knicks"] = "#NewYorkForever"
 team_tag["Thunder"] = "#ThunderUp"
 team_tag["Magic"] = "#MagicTogether"
 team_tag["76ers"] = "#BrotherlyLove"
@@ -35,7 +35,7 @@ team_tag["Kings"] = "#SacramentoProud"
 team_tag["Spurs"] = "#PorVida"
 team_tag["Raptors"] = "#WeTheNorth"
 team_tag["Jazz"] = "#TakeNote"
-team_tag["Wizards"] = "DCAboveAll"
+team_tag["Wizards"] = "#DCAboveAll"
 
 url = 'https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json'
 
